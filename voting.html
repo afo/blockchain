@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Voting Dapp</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0px;
+    font-family: 'segoe ui';
+  }
+
+  .nav {
+    height: 50px;
+    width: 100%;
+    background-color: #4d4d4d;
+    position: relative;
+  }
+
+  .nav > .nav-header {
+    display: inline;
+  }
+
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .nav > .nav-btn {
+    display: none;
+  }
+
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+  }
+
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+
+  .nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .nav > #nav-check {
+    display: none;
+  }
+
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color: #333;
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 50px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+ <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+</head>
+
+<body id="page-top">
+  <div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Build Your Token</a>
+    <a href="new.html">Interact with Token</a>
+    <a href="voting.html">Voting</a>
+    <a href="lottery.html">Lottery</a>
+    <a href="admin.html">Admin settings</a>
+  </div>
+  </div>
+
+  <!-- Navigation -->
+
+
+  <!-- Header -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container">
+      <img class="img-fluid mb-5 d-block mx-auto" src="img/flag.jpg" alt="">
+      <h1 class="text-uppercase mb-0">GET SET VOTE!</h1>
+      <hr class="star-light">
+      <h2 class="font-weight-light mb-0">Create a new proposal</h2><br>
+      <input type="text" class="form-control" id="prop">
+    </div>
+
+<button type="button" id="create" class="btn btn-success">Create</button>
+  </header>
+
+  <!-- Portfolio Grid Section -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <h2 class="text-center text-uppercase text-secondary mb-0">Active Proposals</h2>
+      <hr class="star-dark mb-5">
+      <h5> Your token Balance</h5>
+      <h5 id="balance"></h5><br><br>
+
+
+
+
+    <div id="proposalTemplate" >
+      <!-- <div class="row">
+        <div class="col-xs-12">
+          <h3 class="panel-title">Example</h3>
+          <br>
+          <div class="row">
+            <div class="col-xs-6">
+              <p>Approve vote: <span class="numVotesPos">0</span></p>
+            </div>
+            <div class="col-xs-6">
+              <button type="button" name="button" data-vote="1" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-primary btn-vote">Approve</button>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-6">
+              <p>Against votes: <span class="numVotesNeg">0</span></p>
+            </div>
+            <div class="col-xs-6">
+              <button type="button" name="button" data-vote="2" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-danger btn-vote">Against</button>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-6">
+              <p>Abstence votes: <span class="numVotesAbs">0</span></p>
+            </div>
+            <div class="col-xs-6">
+              <button type="button" name="button" data-vote="3" data-proposal="" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order" class="btn btn-warning btn-vote">Abstence</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <br/>
+    </div> -->
+
+  <script>
+
+
+     if(typeof web3 !== 'undefined') {
+       console.log("Unlock MetaMask");
+       web3 = new Web3(web3.currentProvider);
+     }
+     else {
+       console.log("Install MetaMask");
+       web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:3000"));
+     }
+     web3.version.getNetwork((err, netId) => {
+  switch (netId) {
+  case "1":
+    console.log('This is mainnet')
+    break
+  case "2":
+    console.log('This is the deprecated Morden test network.')
+    break
+  case "3":
+    console.log('This is the ropsten test network.')
+    break
+  case "4":
+    console.log('This is the Rinkeby test network.')
+    break
+  case "42":
+    console.log('This is the Kovan test network.')
+    break
+  default:
+    console.log('This is an unknown network.')
+  }
+  })
+
+     web3.eth.defaultAccount=web3.eth.accounts[0];
+
+  //    var link = parent.document.URL;
+  //
+  // var data = link.split("?");
+  // console.log(data[1]);
+  var facContract = web3.eth.contract([
+  {
+  "constant": false,
+  "inputs": [
+  {
+   "name": "__name",
+   "type": "string"
+  },
+  {
+   "name": "__symbol",
+   "type": "string"
+  },
+  {
+   "name": "__standard",
+   "type": "string"
+  },
+  {
+   "name": "__totalSupply",
+   "type": "uint256"
+  },
+  {
+   "name": "__tokenPrice",
+   "type": "uint256"
+  }
+  ],
+  "name": "make",
+  "outputs": [],
+  "payable": false,
+  "stateMutability": "nonpayable",
+  "type": "function"
+  },
+  {
+  "constant": true,
+  "inputs": [],
+  "name": "view_con_add",
+  "outputs": [
+  {
+   "name": "",
+   "type": "address"
+  }
+  ],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "constant": true,
+  "inputs": [],
+  "name": "temp",
+  "outputs": [
+  {
+   "name": "",
+   "type": "address"
+  }
+  ],
+  "payable": false,
+  "stateMutability": "view",
+  "type": "function"
+  }
+  ]);
+  var fac = facContract.at("0x60b83faf96cd93f96816baf2edcbf9b8004ad611");
+  fac.view_con_add(function(error,result2) {
+    if(!error)
+    {
+
+
+  var testContract = web3.eth.contract([
+ 	{
+ 		"constant": true,
+ 		"inputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "proposals",
+ 		"outputs": [
+ 			{
+ 				"name": "title",
+ 				"type": "string"
+ 			},
+ 			{
+ 				"name": "voteCountPos",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "voteCountNeg",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "voteCountAbs",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "name",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "string"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "_spender",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"name": "_value",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "approve",
+ 		"outputs": [
+ 			{
+ 				"name": "success",
+ 				"type": "bool"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [],
+ 		"name": "end_game",
+ 		"outputs": [],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "totalSupply",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [],
+ 		"name": "select_winner",
+ 		"outputs": [],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "_from",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"name": "_to",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"name": "_value",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "transferFrom",
+ 		"outputs": [
+ 			{
+ 				"name": "success",
+ 				"type": "bool"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "title",
+ 				"type": "string"
+ 			}
+ 		],
+ 		"name": "addProposal",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "bool"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "_numberOfTokens",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "buyTokens",
+ 		"outputs": [],
+ 		"payable": true,
+ 		"stateMutability": "payable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [],
+ 		"name": "endSale",
+ 		"outputs": [],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "getmybalance",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "tokensSold",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "standard",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "string"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [
+ 			{
+ 				"name": "",
+ 				"type": "address"
+ 			}
+ 		],
+ 		"name": "balanceOf",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "getNumProposals",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "tokenPrice",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "symbol",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "string"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "num",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "submit_guess",
+ 		"outputs": [],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "_to",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"name": "_value",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "transfer",
+ 		"outputs": [
+ 			{
+ 				"name": "success",
+ 				"type": "bool"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "proposalInt",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "voteValue",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "vote",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "bool"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "showwinners",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "address[]"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": false,
+ 		"inputs": [
+ 			{
+ 				"name": "num",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "select_number",
+ 		"outputs": [],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [
+ 			{
+ 				"name": "proposalInt",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "getProposal",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "",
+ 				"type": "string"
+ 			},
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "",
+ 				"type": "address[]"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [
+ 			{
+ 				"name": "",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"name": "",
+ 				"type": "address"
+ 			}
+ 		],
+ 		"name": "allowance",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"constant": true,
+ 		"inputs": [],
+ 		"name": "getcontractbalance",
+ 		"outputs": [
+ 			{
+ 				"name": "",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "view",
+ 		"type": "function"
+ 	},
+ 	{
+ 		"inputs": [
+ 			{
+ 				"name": "_name",
+ 				"type": "string"
+ 			},
+ 			{
+ 				"name": "_symbol",
+ 				"type": "string"
+ 			},
+ 			{
+ 				"name": "_standard",
+ 				"type": "string"
+ 			},
+ 			{
+ 				"name": "_tokenPrice",
+ 				"type": "uint256"
+ 			},
+ 			{
+ 				"name": "_initialSupply",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"payable": false,
+ 		"stateMutability": "nonpayable",
+ 		"type": "constructor"
+ 	},
+ 	{
+ 		"anonymous": false,
+ 		"inputs": [
+ 			{
+ 				"indexed": true,
+ 				"name": "_from",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"indexed": true,
+ 				"name": "_to",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"indexed": false,
+ 				"name": "_value",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "Transfer",
+ 		"type": "event"
+ 	},
+ 	{
+ 		"anonymous": false,
+ 		"inputs": [
+ 			{
+ 				"indexed": true,
+ 				"name": "_owner",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"indexed": true,
+ 				"name": "_spender",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"indexed": false,
+ 				"name": "_value",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "Approval",
+ 		"type": "event"
+ 	},
+ 	{
+ 		"anonymous": false,
+ 		"inputs": [
+ 			{
+ 				"indexed": false,
+ 				"name": "_buyer",
+ 				"type": "address"
+ 			},
+ 			{
+ 				"indexed": false,
+ 				"name": "_amount",
+ 				"type": "uint256"
+ 			}
+ 		],
+ 		"name": "Sell",
+ 		"type": "event"
+ 	},
+ 	{
+ 		"anonymous": false,
+ 		"inputs": [],
+ 		"name": "CreatedProposalEvent",
+ 		"type": "event"
+ 	},
+ 	{
+ 		"anonymous": false,
+ 		"inputs": [],
+ 		"name": "CreatedVoteEvent",
+ 		"type": "event"
+ 	}
+ ]);
+  var test = testContract.at(result2);
+  console.log(result2);
+
+  $("#create").click(function() {
+	test.addProposal($("#prop").val(),(error,result) => (console.log(result)));
+});
+
+
+
+
+  test.getmybalance(function(error,result) {
+    if(!error)
+    {
+      $('#balance').html("Tokens:"+result);
+    }
+  });
+
+  test.getNumProposals(function(error,result1) {
+  	if(!error)
+  	{
+  var html = "<div class=\"row\">";
+  for(var j = 0; j < result1; j++) {
+  		console.log('hello')
+  test.getProposal(j,function(error,result){
+  			 html+='<div class="col-xs-12">'+
+'          <h3 class="panel-title">'+ result[1]+'</h3>'+
+'          <br>'+
+'          <div class="row">'+
+'            <div class="col-xs-6">'+
+'              <p>Approve vote: <span class="numVotesPos">'+result[2]+'</span></p>'+
+'            </div>'+
+'            <div class="col-xs-6">'+
+'              <button type="button" id="'+result[0]+'yes" name="button" data-vote="1" data-proposal="" data-loading-text="<i class=\'fa fa-spinner fa-spin \'></i> Processing Order" class="btn btn-primary btn-vote">Approve</button>'+
+'            </div>'+
+'          </div>'+
+'          <br>'+
+'          <div class="row">'+
+'            <div class="col-xs-6">'+
+'              <p>Against votes: <span class="numVotesNeg">'+result[3]+'</span></p>'+
+'            </div>'+
+'            <div class="col-xs-6">'+
+'              <button type="button" id="'+result[0]+'no" name="button" data-vote="2" data-proposal="" data-loading-text="<i class=\'fa fa-spinner fa-spin \'></i> Processing Order" class="btn btn-danger btn-vote">Against</button>'+
+'            </div>'+
+'          </div>'+
+'          <br>'+
+'          <div class="row">'+
+'            <div class="col-xs-6">'+
+'              <p>Abstence votes: <span class="numVotesAbs">'+result[4]+'</span></p>'+
+'            </div>'+
+'            <div class="col-xs-6">'+
+'              <button type="button" id="'+result[0]+'abs" name="button" data-vote="3" data-proposal="" data-loading-text="<i class=\'fa fa-spinner fa-spin \'></i> Processing Order" class="btn btn-warning btn-vote">Abstence</button>'+
+'            </div>'+
+'          </div>'+
+'        </div>'+
+'      </div>'+
+'      <hr/>'+
+'      <br/>'+
+'    </div>';
+
+
+  			document.getElementById("proposalTemplate").innerHTML = html;
+  });
+  	 }
+  }
+  else {
+  	console.log(error);
+  }
+  });
+
+
+
+  test.getNumProposals(function(error,result1) {
+    if(!error)
+    {
+
+$( document ).ready(function() {
+  for(var i =0;i<result1;i++)
+  {
+    for(var j=0;j<3;j++)
+    {
+      if(j==0)
+      {
+    $('body').on('click', '#'+i+'yes', function(event) {
+     var tarid= event.target.id;
+     var val= tarid.substring(1);
+     var valnum;
+     if(val=="yes") valnum=1;
+     if(val=="no") valnum=2;
+     if(val=="abs") valnum=3;
+     console.log(valnum);
+test.vote(tarid[0],valnum,(error,result) => (console.log(result)));
+    });
+  }
+  else if (j==1)
+  {
+    $('body').on('click', '#'+i+'no', function(event) {
+      var tarid= event.target.id;
+      var val= tarid.substring(1);
+      var valnum;
+      if(val=="yes") valnum=1;
+      if(val=="no") valnum=2;
+      if(val=="abs") valnum=3;
+      console.log(valnum);
+      test.vote(tarid[0],valnum,(error,result) => (console.log(result)));
+    });
+  }
+  else if (j==2){
+    $('body').on('click', '#'+i+'abs', function(event) {
+      var tarid= event.target.id;
+      var val= tarid.substring(1);
+      var valnum;
+      if(val=="yes") valnum=1;
+      if(val=="no") valnum=2;
+      if(val=="abs") valnum=3;
+      console.log(valnum);
+test.vote(tarid[0],valnum,(error,result) => (console.log(result)));
+    });
+  }
+    }
+  }
+});
+    }
+    else {
+      console.log(error);
+    }
+});
+
+}
+});
+
+  </script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>
