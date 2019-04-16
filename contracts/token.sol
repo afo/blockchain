@@ -203,7 +203,9 @@ function select_number(uint num) public {
     secretnumber = num;
 }
 
-
+function noofguess() public view returns(uint) {
+  return guesses.length;
+}
 
 function submit_guess(uint num) public {
   require(votestatus[msg.sender]!=1);

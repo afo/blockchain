@@ -184,6 +184,7 @@
 </div>
 
       </div>
+      <h3 id="count"></h3>
       <h2 class="text-center text-uppercase text-secondary mb-0">Show Winners</h2>
       <hr class="star-dark mb-5">
       <h3 id="winner">Drumrolls!!!</h3>
@@ -331,7 +332,7 @@
 		"type": "function"
 	}
 ]);
-  var fac = facContract.at("0x1abd986549ce3a342925518405cca5ec747ec7d5");
+  var fac = facContract.at("0xf730694f7332401375bf2cf5adbccd70fc5d36fd");
   fac.view_con_add(function(error,result2) {
     if(!error)
     {
@@ -686,6 +687,20 @@
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "noofguess",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
@@ -1027,23 +1042,35 @@ console.log(result2);
 });
 
 
+test.noofguess(function(error,result) {
+  if(!error)
+  {
+    $('#count').html("Number of guesses: "+result);
+  }
+});
+
 test.showwinners(function(error,result){
   if(!error)
   {
     if(result!="")
     {
+      console.log("####");
+      $("#winner").html("Congratulations!");
       for(var i=0;i<result.length;i++)
       {
         test.showwinnernames(result[i],function(error,result6){
           if(!error)
           {
             var html = "<li class=\"list-group-item\"><p><div class=\"row\">";
-            html+="<div class=\"col-md-2\"><a " + result6[0] + "\">"+result6[1]+"</a></div>";
-          }
-        })
-      }
-      html+="</div></p></li>";
+            html+="<div class=\"col-md-2\">" + result6[0] + "  Name:"+ result6[1]+"</div>";
+
+           console.log("##########");
+        html+="</div></p></li>";
+
       document.getElementById("winnername").innerHTML += html;
+    }
+  });
+      }
     }
   }
 });

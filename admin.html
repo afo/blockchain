@@ -276,7 +276,7 @@
 		"type": "function"
 	}
 ]);
- var fac = facContract.at("0x1abd986549ce3a342925518405cca5ec747ec7d5");
+ var fac = facContract.at("0xf730694f7332401375bf2cf5adbccd70fc5d36fd");
  fac.view_con_add(function(error,result2) {
    if(!error)
    {
@@ -624,6 +624,20 @@
 			{
 				"name": "",
 				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "noofguess",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -1020,13 +1034,14 @@ $("#conid").html(result2);
             tempguess=guess[players.length-1];
           }
         }
-
+var k=0;
 console.log(tempguess);
         for(j=0;j<players.length;j++)
         {
           if(guess[j]==tempguess)
           {
-            winners.push(players[j]);
+            winners[k]=players[j];
+            k++;
           }
         }
 
