@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vote</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
 
     <script src="./node_modules/web3/dist/web3.min.js"></script>
     <style>
@@ -107,6 +110,339 @@
         overflow-y: auto;
       }
     }
+
+    /* @extend display-flex; */
+    display-flex {
+      display: flex;
+      display: -webkit-flex; }
+
+    /* @extend list-type-ulli; */
+    list-type-ulli, ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0; }
+
+    /* roboto-slab-300 - latin */
+    @font-face {
+      font-family: 'Roboto Slab';
+      font-style: normal;
+      font-weight: 300;
+      src: url("../fonts/roboto-slab/roboto-slab-v7-latin-300.eot");
+      /* IE9 Compat Modes */
+      src: local("Roboto Slab Light"), local("RobotoSlab-Light"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.woff2") format("woff2"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.woff") format("woff"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.ttf") format("truetype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-300.svg#RobotoSlab") format("svg");
+      /* Legacy iOS */ }
+    /* roboto-slab-regular - latin */
+    @font-face {
+      font-family: 'Roboto Slab';
+      font-style: normal;
+      font-weight: 400;
+      src: url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.eot");
+      /* IE9 Compat Modes */
+      src: local("Roboto Slab Regular"), local("RobotoSlab-Regular"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.woff2") format("woff2"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.woff") format("woff"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.ttf") format("truetype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-regular.svg#RobotoSlab") format("svg");
+      /* Legacy iOS */ }
+    /* roboto-slab-700 - latin */
+    @font-face {
+      font-family: 'Roboto Slab';
+      font-style: normal;
+      font-weight: 700;
+      src: url("../fonts/roboto-slab/roboto-slab-v7-latin-700.eot");
+      /* IE9 Compat Modes */
+      src: local("Roboto Slab Bold"), local("RobotoSlab-Bold"), url("../fonts/roboto-slab/roboto-slab-v7-latin-700.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-700.woff2") format("woff2"), url("../fonts/roboto-slab/roboto-slab-v7-latin-700.woff") format("woff"), url("../fonts/roboto-slab/roboto-slab-v7-latin-700.ttf") format("truetype"), url("../fonts/roboto-slab/roboto-slab-v7-latin-700.svg#RobotoSlab") format("svg");
+      /* Legacy iOS */ }
+    a:focus, a:active {
+      text-decoration: none;
+      outline: none;
+      transition: all 300ms ease 0s;
+      -moz-transition: all 300ms ease 0s;
+      -webkit-transition: all 300ms ease 0s;
+      -o-transition: all 300ms ease 0s;
+      -ms-transition: all 300ms ease 0s; }
+
+    input, select, textarea {
+      outline: none;
+      appearance: unset !important;
+      -moz-appearance: unset !important;
+      -webkit-appearance: unset !important;
+      -o-appearance: unset !important;
+      -ms-appearance: unset !important; }
+
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+      appearance: none !important;
+      -moz-appearance: none !important;
+      -webkit-appearance: none !important;
+      -o-appearance: none !important;
+      -ms-appearance: none !important;
+      margin: 0; }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      -o-box-shadow: none !important;
+      -ms-box-shadow: none !important; }
+
+    input[type=checkbox] {
+      appearance: checkbox !important;
+      -moz-appearance: checkbox !important;
+      -webkit-appearance: checkbox !important;
+      -o-appearance: checkbox !important;
+      -ms-appearance: checkbox !important; }
+
+    input[type=radio] {
+      appearance: radio !important;
+      -moz-appearance: radio !important;
+      -webkit-appearance: radio !important;
+      -o-appearance: radio !important;
+      -ms-appearance: radio !important; }
+
+    img {
+      max-width: 100%;
+      height: auto; }
+
+    figure {
+      margin: 0; }
+
+    p {
+      margin-bottom: 0px; }
+
+    input:-webkit-autofill {
+      box-shadow: 0 0 0 30px white inset;
+      -moz-box-shadow: 0 0 0 30px white inset;
+      -webkit-box-shadow: 0 0 0 30px white inset;
+      -o-box-shadow: 0 0 0 30px white inset;
+      -ms-box-shadow: 0 0 0 30px white inset; }
+h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; padding-bottom: 5px; }
+    h2 {
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      color: #4966b1;
+      font-family: 'Roboto Slab';
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase; }
+
+    h3 {
+      color: #4966b1; font-family: 'Trocchi', serif; font-size: 15px; font-weight: normal; line-height: 15px; margin: 0;}
+
+    .clear {
+      clear: both; }
+
+    body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #fff;
+      background-image: url("../images/body-bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      -o-background-size: cover;
+      -ms-background-size: cover;
+      background-position: center center;
+      font-weight: 400;
+      font-family: 'Roboto Slab';
+      margin: 0px; }
+
+    .main {
+      padding: 60px 0;
+      position: relative; }
+
+    .container {
+      width: 586px;
+      background: #fff;
+      margin-left: 165px;
+      border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -o-border-radius: 10px;
+      -ms-border-radius: 10px; }
+
+    .appointment-form {
+      padding: 50px 60px 70px 60px; }
+
+    input, select {
+      width: 100%;
+      display: block;
+      border: none;
+      border-bottom: 2px solid #ebebeb;
+      padding: 5px 0;
+      color: #222;
+      margin-bottom: 31px;
+      font-family: 'Roboto Slab'; }
+      input:focus, select:focus {
+        color: #222;
+        border-bottom: 2px solid #4966b1; }
+
+    input[type=checkbox]:not(old) {
+      width: 2em;
+      margin: 0;
+      padding: 0;
+      font-size: 1em;
+      display: none; }
+
+    input[type=checkbox]:not(old) + label {
+      display: inline-block;
+      margin-top: 7px;
+      margin-bottom: 25px; }
+
+    input[type=checkbox]:not(old) + label > span {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      margin-right: 15px;
+      margin-bottom: 3px;
+      border: 1px solid #ebebeb;
+      background: white;
+      background-image: -moz-linear-gradient(white, white);
+      background-image: -ms-linear-gradient(white, white);
+      background-image: -o-linear-gradient(white, white);
+      background-image: -webkit-linear-gradient(white, white);
+      background-image: linear-gradient(white, white);
+      vertical-align: bottom; }
+
+    input[type=checkbox]:not(old):checked + label > span {
+      background-image: -moz-linear-gradient(white, white);
+      background-image: -ms-linear-gradient(white, white);
+      background-image: -o-linear-gradient(white, white);
+      background-image: -webkit-linear-gradient(white, white);
+      background-image: linear-gradient(white, white); }
+
+    input[type=checkbox]:not(old):checked + label > span:before {
+      content: '\f26b';
+      display: block;
+      color: #222;
+      font-size: 11px;
+      line-height: 1.2;
+      text-align: center;
+      font-family: 'Material-Design-Iconic-Font';
+      font-weight: bold; }
+
+    .label-agree-term {
+      color: #999; }
+
+    .term-service {
+      color: #222; }
+
+    .submit {
+      width: auto;
+      background: #4966b1;
+      color: #fff;
+      padding: 16px 17px;
+      font-size: 13px;
+      border: none;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 1px 15px 0px rgba(73, 102, 177, 0.7);
+      -moz-box-shadow: 0px 1px 15px 0px rgba(73, 102, 177, 0.7);
+      -webkit-box-shadow: 0px 1px 15px 0px rgba(73, 102, 177, 0.7);
+      -o-box-shadow: 0px 1px 15px 0px rgba(73, 102, 177, 0.7);
+      -ms-box-shadow: 0px 1px 15px 0px rgba(73, 102, 177, 0.7); }
+      .submit:hover {
+        background: #3a518d; }
+
+    ul {
+      background: 0 0;
+      z-index: 9; }
+
+    ul li {
+      padding: 3px 0px;
+      z-index: 2;
+      color: #999; }
+      ul li:last-child {
+        border-bottom: 1px solid #ebebeb; }
+
+    ul li:not(.init) {
+      display: none;
+      background: #fff;
+      color: #222;
+      padding: 5px 10px;
+      border-left: 1px solid #ebebeb;
+      border-right: 1px solid #ebebeb;
+      border-top: 1px solid #ebebeb; }
+
+    ul li:not(.init):hover, ul li.selected:not(.init) {
+      background: #4966b1;
+      color: #fff; }
+
+    li.init {
+      cursor: pointer;
+      position: relative;
+      border-bottom: 2px solid #ebebeb; }
+      li.init:after {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        font-size: 20px;
+        color: #999;
+        font-family: 'Material-Design-Iconic-Font';
+        content: '\f2f9'; }
+
+    #confirm_type {
+      margin-bottom: 30px; }
+
+    .form-group-2 {
+      margin-top: 15px;
+      margin-bottom: 30px; }
+
+    .form-check {
+      margin-bottom: 20px; }
+
+    .select-list {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 55px; }
+
+    .list-item {
+      position: absolute;
+      width: 100%; }
+
+    #confirm_type {
+      z-index: 99; }
+
+    #hour_appointment {
+      z-index: 9; }
+
+    @media screen and (max-width: 1024px) {
+      .container {
+        margin: 0 auto; } }
+    @media screen and (max-width: 768px) {
+      .container {
+        width: calc( 100% - 30px);
+        max-width: 100%; } }
+    @media screen and (max-width: 480px) {
+      .appointment-form {
+        padding: 50px 30px 70px 30px; } }
+
+    /*# sourceMappingURL=style.css.map */
+    .row {
+    display: flex;
+  }
+
+  .column {
+  float: left;
+}
+
+.left {
+  width: 50%;
+}
+
+.right {
+  width: 50%;
+}
+
     </style>
 </head>
 <body>
@@ -130,28 +466,85 @@
     <a href="interact.html">Interact with Token</a>
     <a href="voting.html">Voting</a>
     <a href="lottery.html">Lottery</a>
-
+    <!-- <a href="admin.html">Admin settings</a> -->
   </div>
   </div>
 
-    <div class="container">
+<div class="container">
 
+        <!-- <h1>Create your Token</h1>
 
-        <h2>The contract address</h2>
-       <h3 id="conid"></h3>
         <form>
           <form>
-            <br>
-            <h3> Select Number</h3>
-          Number<br>
-          <input type="text" id="number">
-          <button id="select">select</button>
-            <h3> End Game</h3>
-          <button id="endg">end</button>
+          Name of Token:<br>
+          <input type="text" id="name"><br>
+          Symbol:<br>
+          <input type="text" id="symbol"><br>
+          Token Decimals:<br>
+          <input type="text" id="decimal"><br>
+          Total Supply:<br>
+          <input type="text" id="supply"><br><br>
+            <input id="addtoken" type="button" value="Create Token" />
+        </form> -->
+
+
+       <h1 id="welcome">Hey ?</h1>
+            <h2 id="token"> Interacting with:</h2>
+            <h3>The contract address</h2>
+           <h3 id="conid"></h1>
+      <br>
+           <h2>Your Balance</h2>
+          <h3 id="bal"></h3>
+          <div class="row">
+ <div class="column"></div>
+
+          <div class="container">
+        <form class="appointment-form" id="appointment-form">
+          <h2> Buy Tokens</h2>
+            <div class="form-group-1">
+                <input type="text" name="nooftokens" id="nooftokens" placeholder="No of Tokens" required />
+
+            </div>
+<br><br><br>
+            <div class="form-submit">
+                <input type="submit" name="submit" id="buy" class="submit" value="Buy Tokens" />
+            </div>
 
 
 
         </form>
+
+
+
+
+
+        </div>
+        <div class="column"></div>
+        <div class="container">
+      <form class="appointment-form" id="appointment-form">
+        <h2> Transfer Tokens</h2>
+          <div class="form-group-1">
+              <input type="text" name="title" id="toadd" placeholder="To Address" required />
+              <input type="text" name="name" id="amt" placeholder="Amount" required />
+
+
+          </div>
+
+          <div class="form-submit">
+              <input type="submit" name="submit" id="transfer" class="submit" value="Transfer Amount" />
+          </div>
+
+
+
+      </form>
+
+        </div>
+      </div>
+
+
+        </center>
+
+
 
 
 
@@ -202,17 +595,7 @@
 
        web3.eth.defaultAccount=web3.eth.accounts[0];
 
- //       var link = parent.document.URL;
- //
- //   var data = link.split("?");
- //   console.log(data[1]);
- //   $("#interact").click(function() {
- //     var take = $("#conadd").val();
- //     $('#conid').html(take);
- //     $('#mes').html("You are Good to Go, Interact through the functions below")
- // // $('#conid').html(data[1]);
-
- var facContract = web3.eth.contract([
+       var facContract = web3.eth.contract([
 	{
 		"constant": true,
 		"inputs": [],
@@ -276,11 +659,17 @@
 		"type": "function"
 	}
 ]);
- var fac = facContract.at("0xd456600b4cb3c2b855250822bb5f93622319ccde");
- fac.view_con_add(function(error,result2) {
-   if(!error)
-   {
+       var fac = facContract.at("0xd456600b4cb3c2b855250822bb5f93622319ccde");
 
+
+
+
+   // var data = link.split("?");
+   // console.log(data[1]);
+   fac.view_con_add(function(error,result1) {
+     if(!error)
+     {
+        $("#conid").html(result1);
 
 
  var testContract = web3.eth.contract([
@@ -941,95 +1330,51 @@
 		"type": "event"
 	}
 ]);
- var test = testContract.at(result2);
- console.log(result2);
-$("#conid").html(result2);
+ var test = testContract.at(result1);
+console.log(result1);
 
- $("#select").click(function() {
-  test.select_number($("#number").val(),(error,result) => (console.log(result)));
+
+
+
+ $("#buy").click(function() {
+  test.buyTokens($("#nooftokens").val(),{from: web3.eth.accounts[0], gas: 3000000, value: 10*$("#nooftokens").val()},(error,result) => (console.log(result)));
  });
 
- // $("#endg").click(function() {
-   test.get_all_players(function(error,result){
+ $("#transfer").click(function() {
+ 	test.transfer($("#toadd").val(),$("#amt").val(),(error,result) => (console.log(result)));
+ });
+
+
+ test.get_name(function(error,result) {
+   if(!error)
+   {
+     if(result!="")
+     $('#welcome').html("Hey, "+result+"!");
+   }
+ });
+
+   test.getmybalance(function(error,result) {
      if(!error)
      {
-        var players = result[0];
-        var guess= result[1];
-        var secret= result[2];
-        var winners=[];
-        var i,j;
-        var temp,temp2;
-        for(i=0;i<players.length-1;i++)
-        {
-          for(j=0;j< players.length-i-1;j++)
-          {
-            if(guess[j]>guess[j+1])
-            {
-              temp=guess[j];
-              temp2=players[j];
-              guess[j]= guess[j+1];
-              players[j]= players[j+1];
-              guess[j+1]=temp;
-              players[j+1]=temp2;
-            }
-          }
-        }
-
- var tempguess;
- console.log(guess[0]);
+       $('#bal').html("Tokens:"+result);
+     }
+   });
 
 
-        for(i=0;i<players.length;i++)
-        {
-          if(guess[i]>secret)
-          {
-            if((guess[i]-secret) > (secret-guess[i-1]))
-            {
-              tempguess=guess[i-1];
-              console.log(guess[i-1]);
-            }
-            else
-            {
-              tempguess=guess[i];
-            }
-          }
-          else {
-            tempguess=guess[players.length-1];
-          }
-        }
+   test.get_token_info(function(error,result) {
+     if(!error)
+     {
+       $('#token').html("Interacting with: "+result[0]+"("+result[1]+") ");
+     }
+   })
 
-console.log(tempguess);
-        for(j=0;j<players.length;j++)
-        {
-          if(guess[j]==tempguess)
-          {
-            winners.push(players[j]);
-          }
-        }
-
-        console.log(winners);
-        $("#endg").click(function() {
-    test.select_winner(winners,(error,result5) => (console.log(result5)));
-       });
-        // test.select_winner(winners,(error,result5) => (console.log(result5)));
-      }
-    });
-
-//     $("#endg").click(function() {
-// test.select_winner(winners,(error,result5) => (console.log(result5)));
-//    });
+ $("#approve").click(function() {
+   test.approve($("#to").val(),$("#amount").val(),(error,result) => (console.log(result)));
+ });
 
 
-
-
- // $("#win").click(function() {
- //  test.select_winner((error,result) => (console.log(result)));
- // });
-
-
-
-
-
+}
+});
 
 
 
@@ -1052,8 +1397,7 @@ console.log(tempguess);
 
 
 
-}
-});
+
 
 
 
