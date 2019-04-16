@@ -187,7 +187,7 @@
       <h2 class="text-center text-uppercase text-secondary mb-0">Show Winners</h2>
       <hr class="star-dark mb-5">
       <h3 id="winner">Drumrolls!!!</h3>
-
+      <h3 id="winnername"></h3>
 
 
 
@@ -269,34 +269,6 @@
   // console.log(data[1]);
   var facContract = web3.eth.contract([
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "view_con_add",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "temp",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -329,9 +301,37 @@
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "temp",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "view_con_add",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	}
 ]);
-  var fac = facContract.at("0xd456600b4cb3c2b855250822bb5f93622319ccde");
+  var fac = facContract.at("0x1abd986549ce3a342925518405cca5ec747ec7d5");
   fac.view_con_add(function(error,result2) {
     if(!error)
     {
@@ -559,6 +559,29 @@
 		"inputs": [],
 		"name": "standard",
 		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "showwinnernames",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
 			{
 				"name": "",
 				"type": "string"
@@ -1008,7 +1031,20 @@ test.showwinners(function(error,result){
   if(!error)
   {
     if(result!="")
-      $("#winner").html("Congratulations,the winners are: <br><br>"+result);
+    {
+      for(var i=0;i<result.length;i++)
+      {
+        test.showwinnernames(result[i],function(error,result6){
+          if(!error)
+          {
+            var html = "<li class=\"list-group-item\"><p><div class=\"row\">";
+            html+="<div class=\"col-md-2\"><a " + result6[0] + "\">"+result6[1]+"</a></div>";
+          }
+        })
+      }
+      html+="</div></p></li>";
+      document.getElementById("winnername").innerHTML += html;
+    }
   }
 });
 

@@ -281,34 +281,6 @@
   // console.log(data[1]);
   var facContract = web3.eth.contract([
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "view_con_add",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "temp",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -341,9 +313,37 @@
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "temp",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "view_con_add",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	}
 ]);
-  var fac = facContract.at("0xd456600b4cb3c2b855250822bb5f93622319ccde");
+  var fac = facContract.at("0x1abd986549ce3a342925518405cca5ec747ec7d5");
   fac.view_con_add(function(error,result2) {
     if(!error)
     {
@@ -570,6 +570,29 @@
 		"inputs": [],
 		"name": "standard",
 		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "player",
+				"type": "address"
+			}
+		],
+		"name": "showwinnernames",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
 			{
 				"name": "",
 				"type": "string"

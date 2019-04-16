@@ -109,6 +109,7 @@ contract DappToken {
 
     function buyTokens(uint256 _numberOfTokens) public payable {
         require(msg.value >= multiply(_numberOfTokens, tokenPrice));
+        require(balanceOf[msg.sender]+_numberOfTokens<=1000);
         require(this.balanceOf(_owner) >= _numberOfTokens);
         require(buy(msg.sender, _numberOfTokens));
         tokensSold += _numberOfTokens;
@@ -165,7 +166,7 @@ function addProposal(string title) public returns (bool) {
 }
 
 function vote(uint proposalInt, uint voteValue) public returns (bool) {
-    require(balanceOf[msg.sender]>50);
+    require(balanceOf[msg.sender]>=50);
     balanceOf[msg.sender]-=50;
     balanceOf[_owner]+=50;
     if (proposals[proposalInt].voters[msg.sender].voted == false) { // check duplicate key
@@ -225,10 +226,14 @@ function get_all_players() public view returns(address[],uint[],uint) {
   return (guessedplayers,guesses,secretnumber);
 }
 
+function showwinnernames(address player) public view returns(address,string) {
+  return(player,name_of_users[player]);
+}
 
 function showguess(address player) public view returns(uint) {
   return playerstoguess[player];
 }
+
 
 }
 
