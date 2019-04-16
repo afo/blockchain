@@ -12,8 +12,11 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
   <!-- Custom fonts for this template -->
+
+<link href="https://fonts.googleapis.com/css?family=Slabo+13px" rel="stylesheet">
+
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -117,6 +120,19 @@
       height: calc(100vh - 50px);
       overflow-y: auto;
     }
+
+    h4 {
+
+
+    font-family: 'Slabo 13px', serif;
+
+
+    }
+
+    .danger {
+ background-color: #ffdddd;
+ border-left: 6px solid #f44336;
+}
   }
   </style>
   <!-- Custom styles for this template -->
@@ -170,8 +186,16 @@
   <!-- Portfolio Grid Section -->
   <section class="portfolio" id="portfolio">
     <div class="container">
-      <h4> Your token Balance</h5>
-      <h4 id="balance"></h5><br><br>
+      <h4 class="font-weight-light mb-0"> Your token Balance</h4>
+      <h4 id="balance"></h4><br><br>
+      <div class="card">
+  <div class="card-body">
+    <div class="danger">
+ <p><strong>Alert!</strong> In order to cast a vote you need at least 51 tokens. You can vote on a proposal only once and it's registered forever.</p>
+</div>
+
+  </div>
+</div>
       <h2 class="text-center text-uppercase text-secondary mb-0">Active Proposals</h2>
       <hr class="star-dark mb-5">
 
@@ -996,7 +1020,7 @@
   test.getmybalance(function(error,result) {
     if(!error)
     {
-      $('#balance').html("Tokens:"+result);
+      $('#balance').html("Tokens: "+result);
     }
   });
 
@@ -1012,19 +1036,19 @@
 '          <br>'+
 '          <div class="row">'+
 '            <div class="col-xs-6">'+
-'              <p>Approve vote: <span class="numVotesPos">'+result[2]+'</span></p>'+
+'              <p>Yes votes: <span class="numVotesPos">'+result[2]+'</span></p>'+
 '            </div>'+
 '            <div class="col-xs-6">'+
-'              <button type="button" id="'+result[0]+'yes" name="button" data-vote="1" data-proposal="" data-loading-text="<i class=\'fa fa-spinner fa-spin \'></i> Processing Order" class="btn btn-primary btn-vote">Approve</button>'+
+'              <button type="button" id="'+result[0]+'yes" name="button" data-vote="1" data-proposal="" data-loading-text="<i class=\'fa fa-spinner fa-spin \'></i> Processing Order" class="btn btn-primary btn-vote">Yes</button>'+
 '            </div>'+
 '          </div>'+
 '          <br>'+
 '          <div class="row">'+
 '            <div class="col-xs-6">'+
-'              <p>Against votes: <span class="numVotesNeg">'+result[3]+'</span></p>'+
+'              <p>No votes: <span class="numVotesNeg">'+result[3]+'</span></p>'+
 '            </div>'+
 '            <div class="col-xs-6">'+
-'              <button type="button" id="'+result[0]+'no" name="button" data-vote="2" data-proposal="" data-loading-text="<i class=\'fa fa-spinner fa-spin \'></i> Processing Order" class="btn btn-danger btn-vote">Against</button>'+
+'              <button type="button" id="'+result[0]+'no" name="button" data-vote="2" data-proposal="" data-loading-text="<i class=\'fa fa-spinner fa-spin \'></i> Processing Order" class="btn btn-danger btn-vote">No</button>'+
 '            </div>'+
 '          </div>'+
 '          <br>'+
