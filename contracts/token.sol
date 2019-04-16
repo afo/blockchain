@@ -4,6 +4,7 @@ contract DappToken {
     string  public name;
     string  public symbol;
     string  public standard;
+    uint256 public decimalPlaces;
     uint256 public totalSupply;
     uint256 public tokenPrice;
     address _owner;
@@ -19,17 +20,27 @@ contract DappToken {
         uint256 _value
     );
 
+    mapping(address => string) public name_of_users;
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    function DappToken (string _name, string _symbol,string _standard, uint256 _tokenPrice,uint256 _initialSupply) public {
+    function DappToken (string _name, string _symbol,string _standard,uint256 _decimalPlaces, uint256 _tokenPrice,uint256 _initialSupply) public {
         name = _name;
         symbol = _symbol;
         standard = _standard;
+        decimalPlaces = _decimalPlaces;
         balanceOf[tx.origin] = _initialSupply;
         totalSupply = _initialSupply;
         tokenPrice = _tokenPrice;
         _owner = tx.origin;
+    }
+
+    function set_name(string _name) public {
+      name_of_users[msg.sender]=_name;
+    }
+
+    function get_name() public view returns(string) {
+      return name_of_users[msg.sender];
     }
 
     function transfer(address _to, uint256 _value) public returns (bool success) {
@@ -77,6 +88,10 @@ contract DappToken {
 
     function getmybalance()public view returns(uint) {
         return balanceOf[msg.sender];
+    }
+
+    function get_token_info() view returns(string,string) {
+      return (name,symbol);
     }
 //Token Sale**************************
 
@@ -176,8 +191,12 @@ function vote(uint proposalInt, uint voteValue) public returns (bool) {
 // lottery ******************************
 uint secretnumber;
 address[] guessedplayers;
+uint[] guesses;
+address[] winnerslist;
 
 mapping (address => uint) playerstoguess;
+
+mapping (address => uint) votestatus;
 function select_number(uint num) public {
   require(msg.sender==_owner);
     secretnumber = num;
@@ -186,56 +205,29 @@ function select_number(uint num) public {
 
 
 function submit_guess(uint num) public {
-  playerstoguess[msg.sender]=num;
+  require(votestatus[msg.sender]!=1);
+  guesses.push(num);
   guessedplayers.push(msg.sender);
+  playerstoguess[msg.sender]=num;
+  votestatus[msg.sender]=1;
 }
 
-function end_game() public{
-  require(msg.sender == _owner);
-  for(uint i=0;i<guessedplayers.length;i++)
-  {
-    for(uint j=i+1;j<guessedplayers.length;j++)
-    {
-      if(playerstoguess[guessedplayers[i]]>playerstoguess[guessedplayers[j]])
-      {
-        address temp = guessedplayers[i];
-        guessedplayers[i]=guessedplayers[j];
-        guessedplayers[j]=temp;
-      }
-    }
-  }
-}
-
-address[] winnerslist;
-address tempplayer;
-
-function select_winner() public{
-  require(msg.sender == _owner);
-  for(uint i=0;i<guessedplayers.length;i++)
-  {
-    if(playerstoguess[guessedplayers[i]]>secretnumber)
-    {
-      if((playerstoguess[guessedplayers[i]]-secretnumber) > (secretnumber-playerstoguess[guessedplayers[i-1]]))
-      {
-        tempplayer=guessedplayers[i-1];
-      }
-      else
-      {
-        tempplayer=guessedplayers[i];
-      }
-    }
-  }
-  for(uint j=0;j<guessedplayers.length;j++)
-  {
-    if(playerstoguess[guessedplayers[j]]==playerstoguess[tempplayer])
-    {
-      winnerslist.push(guessedplayers[j]);
-    }
-  }
+function select_winner(address[] _winnerslist) public {
+  require(msg.sender==_owner);
+  winnerslist=_winnerslist;
 }
 
 function showwinners()public view returns(address[]) {
   return winnerslist;
+}
+
+function get_all_players() public view returns(address[],uint[],uint) {
+  return (guessedplayers,guesses,secretnumber);
+}
+
+
+function showguess(address player) public view returns(uint) {
+  return playerstoguess[player];
 }
 
 }
@@ -247,8 +239,8 @@ contract Factory {
     return temp;
   }
 
-  function make(string __name, string __symbol, string __standard, uint256 __totalSupply, uint256 __tokenPrice ) public {
-    DappToken d = new DappToken(__name,__symbol,__standard,__totalSupply,__tokenPrice);
+  function make(string __name, string __symbol, string __standard,uint256 __decimalPlaces, uint256 __tokenPrice,uint256 __totalSupply) public {
+    DappToken d = new DappToken(__name,__symbol,__standard,__decimalPlaces,__tokenPrice,__totalSupply);
     temp=address(d);
   }
 }
