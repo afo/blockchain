@@ -8,7 +8,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/style2.css">
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-		
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet"> 
 
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
@@ -23,7 +23,7 @@
 		html {
 			zoom: 125%;
 		}
-		
+
     body {
       margin: 0px;
       font-family: 'segoe ui';
@@ -165,7 +165,7 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
       padding: 0;
       font-weight: bold;
       color: #4966b1;
-			font-family: 'Roboto Slab';
+			font-family: 'Roboto Slab', serif;
 			src: url("../fonts/roboto-slab/roboto-slab-v7-latin-300.eot");
       font-size: 20px;
       margin-bottom: 10px;
@@ -213,16 +213,36 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
       -o-border-radius: 10px;
       -ms-border-radius: 10px; }
 
-			.container2 {
-      width: 900px;
-      background: #fff;
-      margin-left: 0px;
-      border-radius: 10px;
-      -moz-border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -o-border-radius: 10px;
-      -ms-border-radius: 10px; }
+		@media screen and (max-width:585px) {
+			.container {
+				width: 100%;
+			}
 
+			h3 {
+				width: 100%;
+			}
+		}
+			.container2 {
+      width: 800px;
+      margin-left: 370px;
+			}
+
+			@media screen and (max-width: 899px) {
+				.container2 {
+					width: 100%;
+					margin: 0px auto;
+				}
+
+				.left {
+					width: 100%;
+					float: left;
+				}
+
+				.right {
+					width: 100%;
+					float: left;
+				}
+			}
 
 	#max {
   font-size: 14px;
@@ -245,7 +265,7 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	color: #4c4c4c;
-  margin: 20px auto;
+  margin-top: 20px;
   width: 343px; 
   height: 314px ; 
   -webkit-border-radius: 8px/7px; 
@@ -369,16 +389,16 @@ input[type=text],input[type=password]{
 
 .left {
 	
-	padding-left: 20%;
 	
+	width: 400px;
 	float: left;
 }
 
 .right {
-
-	float: right;
+	width: 400px;
+	float: left;
 	
-	padding-right: 20%;
+
 }
 
 
@@ -496,7 +516,7 @@ input[type=text],input[type=password]{
 
 
 
-
+<div class="container2">
 
 <div class="left">
 		<div class="testbox">
@@ -531,6 +551,7 @@ input[type=text],input[type=password]{
 					 <input type="submit" name="submit" id="transfer" value="Transfer" class="submit">
 					</form>
 				</div>
+</div>
 </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

@@ -124,8 +124,13 @@
     .container2 {
         width: 500px;
         margin-top: 30px;
-        
-        position: relative;
+      
+    }
+
+    @media screen and (max-width: 499px) {
+      .container2 {
+        width: 100%;
+      }
     }
 
 
@@ -164,29 +169,37 @@
   }
 }
 .container {
-  position: absolute;
-  margin-left: 26%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
+      width: 950px;
+      background: #fff;
+      
+      border-radius: 10px;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -o-border-radius: 10px;
+      -ms-border-radius: 10px;
+      margin-left: 350px; }
+
+      @media screen and (max-width: 949px) {
+				.container {
+					width: 100%;
+          margin: 0px auto;
+				}
+
+				.left {
+					width: 100%;
+					float: left;
+				}
+
+				.right {
+					width: 100%;
+					float: left;
+				}
+        
+       
+			}
 
 
-/* .left {
-	padding-top: 190px;
-	padding-left: 20%;
-	
-	float: left;
-}
 
-.right {
-
-	float: right;
-	padding-top: 190px;
-	padding-right: 20%;
-} */
 .card {
   position: relative;
   box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.2);
@@ -194,7 +207,8 @@
   width: 20em;
   background-color: #4966b1;
   transition: all .3s ease-in-out;
-  margin-top: -100px;
+  margin-top: 30px;
+ 
   
 }
 .card:hover {
@@ -276,6 +290,19 @@
 }
 
 
+.left {
+	
+	
+	width: 475px;
+	float: left;
+}
+
+.right {
+	width: 475px;
+	float: left;
+	
+
+}
 
     </style>
 </head>
@@ -350,17 +377,7 @@
 		</a>
     </article>
 </div>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
+   
 
     
 
@@ -405,6 +422,7 @@
 	</article>
 </div>
 </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
 </body>
