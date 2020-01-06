@@ -42,7 +42,7 @@ body {
 
 .nav > .nav-links {
   display: inline;
-  float: right;
+  float: left;
   font-size: 18px;
 }
 
@@ -65,7 +65,7 @@ body {
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
-    right: 0px;
+    left: 0px;
     top: 0px;
   }
   .nav > .nav-btn > label {
@@ -507,6 +507,7 @@ li.init {
 
     <script>
 
+ethereum.enable();      
 
        if(typeof web3 !== 'undefined') {
          console.log("Unlock MetaMask");
@@ -603,7 +604,7 @@ li.init {
 		"type": "function"
 	}
 ]);
-    var test = testContract.at("0xf730694f7332401375bf2cf5adbccd70fc5d36fd");
+    var test = testContract.at("0x8F98501800A0d863bF8d18a97598794BFEf92cFb");
 
 
 

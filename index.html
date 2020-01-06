@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vote</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
 
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
@@ -46,7 +46,7 @@
 
     .nav > .nav-links {
       display: inline;
-      float: right;
+      float: left;
       font-size: 18px;
     }
 
@@ -69,7 +69,7 @@
       .nav > .nav-btn {
         display: inline-block;
         position: absolute;
-        right: 0px;
+        left: 0px;
         top: 0px;
       }
       .nav > .nav-btn > label {
@@ -96,18 +96,19 @@
         transition: all 0.3s ease-in;
         overflow-y: hidden;
         top: 50px;
-        left: 0px;
+				left: 0px;
+				z-index: 2;
       }
       .nav > .nav-links > a {
         display: block;
         width: 100%;
       }
       .nav > #nav-check:not(:checked) ~ .nav-links {
-        height: 0px;
+				height: 0px;
       }
       .nav > #nav-check:checked ~ .nav-links {
         height: calc(100vh - 50px);
-        overflow-y: auto;
+				overflow-y: auto;	
       }
     }
 
@@ -198,7 +199,8 @@
 
     img {
       max-width: 100%;
-      height: auto; }
+			height: auto;
+		   }
 
     figure {
       margin: 0; }
@@ -253,7 +255,7 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
     .container {
       width: 586px;
       background: #fff;
-      margin-left: 165px;
+      margin-left: 0px;
       border-radius: 10px;
       -moz-border-radius: 10px;
       -webkit-border-radius: 10px;
@@ -262,19 +264,6 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
 
     .appointment-form {
       padding: 50px 60px 70px 60px; }
-
-    input, select {
-      width: 100%;
-      display: block;
-      border: none;
-      border-bottom: 2px solid #ebebeb;
-      padding: 5px 0;
-      color: #222;
-      margin-bottom: 31px;
-      font-family: 'Roboto Slab'; }
-      input:focus, select:focus {
-        color: #222;
-        border-bottom: 2px solid #4966b1; }
 
     input[type=checkbox]:not(old) {
       width: 2em;
@@ -443,6 +432,72 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
   width: 50%;
 }
 
+
+
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+
+.cover  {
+  height: 15vh;
+  width: 100%;
+  
+  padding: 20px 50px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.flex-form input[type="submit"] {
+  background: #4966b1;
+  border: 1px solid #4966b1;
+  color: #fff;
+  padding: 0 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.flex-form input[type="submit"]:hover {
+  background: #4dab3a;
+  border: 1px solid #4dab3a;
+}
+
+.flex-form {
+  display: -webkit-box;
+  display: flex;
+  z-index: 10;
+  position: relative;
+  width: 380px;
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.flex-form > * {
+  border: 0;
+  padding: 0 0 0 10px;
+  background: #fff;
+  line-height: 50px;
+  font-size: 1rem;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+}
+
+input[type="search"] {
+  flex-basis: 500px;
+}
+
+
     </style>
 </head>
 <body>
@@ -464,14 +519,13 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
   <div class="nav-links">
     <a href="index.html">Associate Name</a>
     <a href="interact.html">Interact with Token</a>
-    <a href="voting.html">Voting</a>
-    <a href="lottery.html">Lottery</a>
+    <a href="selection.html">Games</a>
     <!-- <a href="admin.html">Admin settings</a> -->
   </div>
   </div>
 
   <center>
-    <br><br><br>
+    
     <div class="container">
 
         <!-- <h1>Create your Token</h1>
@@ -487,10 +541,17 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
           Total Supply:<br>
           <input type="text" id="supply"><br><br>
             <input id="addtoken" type="button" value="Create Token" />
-        </form> -->
-
-
+				</form> -->
+			
+						<img src="hello.gif">
+				
+				<h1 style="font-family: Verdana, Geneva, sans-serif;color: #222; font-size: 34px; font-style: normal; font-variant: normal; font-weight: 700; float: left; line-height: 34.4px;border: 10px solid #4966b1; border-radius: 10px; padding: 12px;margin-top: -30px;margin-bottom: 60px">This <span style="color: #4966b1">Tutorial</span> will help you understand, use and play around with <span style="color: #4966b1">Ethereum Smart Contracts</span>.</h1>
+			
+				
+			  
+<!-- 	
         <form class="appointment-form" id="appointment-form">
+					<br>
             <h2>Register Your Name</h2>
             <div class="form-group-1">
                 <input type="text" name="title" id="name" placeholder="Your Name" required />
@@ -502,27 +563,34 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
             </div>
         </form>
 
+			</div> -->
+			
 
 
-
-        <br>
-        </div></div>
-
-
-        </center>
-
-
-
-
-
-
-
-
-        <br>
-        </div></div>
-
+       
+        </div>
+				<div class="cover">
+						<h1 style=" font-family: 'Lato', sans-serif;margin: 0; color: #4966b1">Tell Us Your Name</h1>
+						<form  class="flex-form">
+							<label for="from">
+								
+							</label>
+							<input type="search" name="title" id="name" placeholder="Try making it uniquely unique!">
+							<input type="submit" name="submit" id="enter" value="Register">
+						</form>
+					
+					</div>
 
         </center>
+
+
+
+
+
+
+
+
+        
 
 
     </div>
@@ -530,7 +598,7 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
     <script>
-
+			ethereum.enable();
 
        if(typeof web3 !== 'undefined') {
          console.log("Unlock MetaMask");
@@ -628,7 +696,7 @@ h1 { color: #465289; font-size: 48px; font-family: 'Signika', sans-serif; paddin
 		"type": "function"
 	}
 ]);
-       var fac = facContract.at("0xf730694f7332401375bf2cf5adbccd70fc5d36fd");
+       var fac = facContract.at("0x8F98501800A0d863bF8d18a97598794BFEf92cFb");
 
 
 

@@ -77,7 +77,7 @@
     .nav > .nav-btn {
       display: inline-block;
       position: absolute;
-      right: 0px;
+      left: 0px;
       top: 0px;
     }
     .nav > .nav-btn > label {
@@ -148,10 +148,7 @@
   </div>
 
   <div class="nav-links">
-    <a href="index.html">Associate Name</a>
-    <a href="interact.html">Interact with Token</a>
-    <a href="voting.html">Voting</a>
-    <a href="lottery.html">Lottery</a>
+    <a href="selection.html">Go Back</a>
     <!-- <a href="admin.html">Admin settings</a> -->
   </div>
   </div>
@@ -170,7 +167,7 @@
       <input type="text" class="form-control" id="num">
     </div>
 
-<button type="button" id="guess" class="btn btn-success">Guess</button>
+<button type="button" id="guess" style="margin-top: 20px; margin-bottom: -5px" class="btn btn-success">Guess</button>
   </header>
 
   <!-- Portfolio Grid Section -->
@@ -229,7 +226,8 @@
       <br/>
     </div> -->
 
-  <script>
+	<script>	
+		ethereum.enable();
 
 
      if(typeof web3 !== 'undefined') {
@@ -332,7 +330,7 @@
 		"type": "function"
 	}
 ]);
-  var fac = facContract.at("0xf730694f7332401375bf2cf5adbccd70fc5d36fd");
+  var fac = facContract.at("0x8F98501800A0d863bF8d18a97598794BFEf92cFb");
   fac.view_con_add(function(error,result2) {
     if(!error)
     {

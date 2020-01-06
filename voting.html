@@ -80,7 +80,7 @@
     .nav > .nav-btn {
       display: inline-block;
       position: absolute;
-      right: 0px;
+      left: 0px;
       top: 0px;
     }
     .nav > .nav-btn > label {
@@ -159,10 +159,8 @@
   </div>
 
   <div class="nav-links">
-    <a href="index.html">Associate Name</a>
-    <a href="interact.html">Interact with Token</a>
-    <a href="voting.html">Voting</a>
-    <a href="lottery.html">Lottery</a>
+    <a href="selection.html">Go Back</a>
+    
     <!-- <a href="admin.html">Admin settings</a> -->
   </div>
   </div>
@@ -173,14 +171,14 @@
   <!-- Header -->
   <header class="masthead bg-primary text-white text-center">
     <div class="container">
-      <img class="img-fluid mb-5 d-block mx-auto" src="img/flag.jpg" alt="">
+      <img class="img-fluid mb-5 d-block mx-auto" src="img/vote.png" alt="">
       <h1 class="text-uppercase mb-0">GET SET VOTE!</h1>
       <hr class="star-light">
       <h2 class="font-weight-light mb-0">Create a new proposal</h2><br>
       <input type="text" class="form-control" id="prop">
     </div>
 
-<button type="button" id="create" class="btn btn-success">Create</button>
+<button type="button" id="create" style="margin-top: 20px; margin-bottom: -5px" class="btn btn-success">Create</button>
   </header>
 
   <!-- Portfolio Grid Section -->
@@ -242,6 +240,7 @@
 
   <script>
 
+ethereum.enable();
 
      if(typeof web3 !== 'undefined') {
        console.log("Unlock MetaMask");
@@ -274,7 +273,8 @@
   })
 
      web3.eth.defaultAccount=web3.eth.accounts[0];
-
+console.log(web3.eth.accounts[0]);
+console.log("########");
   //    var link = parent.document.URL;
   //
   // var data = link.split("?");
@@ -343,7 +343,7 @@
 		"type": "function"
 	}
 ]);
-  var fac = facContract.at("0xf730694f7332401375bf2cf5adbccd70fc5d36fd");
+  var fac = facContract.at("0x8F98501800A0d863bF8d18a97598794BFEf92cFb");
   fac.view_con_add(function(error,result2) {
     if(!error)
     {
